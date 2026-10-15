@@ -9,10 +9,10 @@ import jwt from 'jsonwebtoken'
 const cookieOption = {
     httpOnly: true,
     secure: config.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: config.NODE_ENV === "production" ? "none" : "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000,
     path: "/",
-}
+};
 
 export const register = async (req, res) => {
     try {
